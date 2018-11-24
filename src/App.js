@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import TodoItem from "./components/TodoItem";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.TodoItems = [
+      { title: "Mua bim bim", isComplete: true },
+      { title: "Di da bong", isComplete: true },
+      { title: "Di do xang" }
+    ];
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.TodoItems.length > 0 &&
+          this.TodoItems.map((item, index) => (
+            <TodoItem key={index} item={item} />
+          ))}
+        {this.TodoItems.length === 0 && "Nothing here"}
       </div>
     );
   }
